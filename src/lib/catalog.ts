@@ -76,8 +76,14 @@ export async function loadCatalog({
     }
 
     const records = payload.data;
+    const fallbackById = new Map(
+      fallbackProducts.map((product) => [product.id, product])
+    );
     const products = records.map((record) =>
-      mapDirectusProduct(directusUrl, record)
+      mergeFallbackImages(
+        mapDirectusProduct(directusUrl, record),
+        fallbackById.get(record.slug)
+      )
     );
 
     if (products.length === 0) {
