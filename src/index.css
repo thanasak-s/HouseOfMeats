@@ -1,0 +1,358 @@
+/* House of Meats - Premium Dark Theme CSS Design System */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Core Brand Tokens */
+:root {
+  /* Color Palette */
+  --bg-base: #0a0a0b;
+  --bg-surface: #121214;
+  --bg-surface-hover: #19191d;
+  --bg-glass: rgba(10, 10, 11, 0.75);
+  
+  --color-gold: #c5a880; /* Premium Champagne Gold */
+  --color-gold-bright: #dfba73;
+  --color-gold-glow: rgba(197, 168, 128, 0.4);
+  --color-gold-dark: #9a7d55;
+  
+  --color-red: #8b1e0f; /* Elegant Burgundy / Steak Red */
+  --color-red-hover: #a92d24;
+  
+  --color-text-primary: #f3f4f6; /* Off-White */
+  --color-text-secondary: #9ca3af; /* Silver Gray */
+  --color-text-muted: #6b7280; /* Dark Gray */
+  
+  /* Brand specific colors */
+  --color-line: #06C755; /* LINE Green */
+  --color-line-hover: #05b04b;
+  --color-fb: #1877F2; /* Facebook Blue */
+  --color-fb-hover: #166fe5;
+
+  /* Borders & Shadows */
+  --border-dark: #1f1f23;
+  --border-gold: rgba(197, 168, 128, 0.2);
+  --border-gold-hover: rgba(197, 168, 128, 0.55);
+  --shadow-premium: 0 12px 40px -10px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 0 25px -5px rgba(197, 168, 128, 0.15);
+  
+  /* Typography */
+  --font-serif: 'Cinzel', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  
+  /* Transition speed */
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* Global Reset & Base Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for sticky header */
+  background-color: var(--bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-base);
+  line-height: 1.6;
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 4px;
+  border: 1px solid var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}
+
+/* Reusable Layout Container */
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Universal Section Headers */
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-accent-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  position: relative;
+  font-weight: 800;
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Brand Colors Accent Utility */
+.text-accent {
+  color: var(--color-gold);
+  background: linear-gradient(135deg, var(--color-gold-bright), var(--color-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================
+   PREMIUM BUTTON SYSTEM (Standardized layout)
+   ========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+/* Button Sizing */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.75rem;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 0.95rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Primary Button (Gold/Champagne theme) */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-gold-bright), var(--color-gold));
+  color: #000;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -6px var(--color-gold-glow);
+  background: linear-gradient(135deg, #fff, var(--color-gold-bright));
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button (Matte Charcoal style) */
+.btn-secondary {
+  background-color: var(--bg-surface);
+  border-color: var(--border-dark);
+  color: var(--color-text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+/* Outline Button (Clean luxury look) */
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-text-primary);
+  color: #000;
+  border-color: var(--color-text-primary);
+  transform: translateY(-2px);
+}
+
+/* LINE Branded CTA Class */
+.btn-line {
+  background: var(--color-line) !important;
+  color: #fff !important;
+  border-color: var(--color-line) !important;
+}
+
+.btn-line:hover {
+  background: var(--color-line-hover) !important;
+  border-color: var(--color-line-hover) !important;
+  box-shadow: 0 8px 24px -6px rgba(6, 199, 85, 0.4) !important;
+}
+
+/* Facebook Branded CTA Class */
+.btn-fb {
+  background: var(--color-fb) !important;
+  color: #fff !important;
+  border-color: var(--color-fb) !important;
+}
+
+.btn-fb:hover {
+  background: var(--color-fb-hover) !important;
+  border-color: var(--color-fb-hover) !important;
+  box-shadow: 0 8px 24px -6px rgba(24, 119, 242, 0.4) !important;
+}
+
+/* Pulsing effect for main LINE CTAs */
+.btn-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pulse::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: scale(0.9);
+  border-radius: 4px;
+}
+
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(6, 199, 85, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 199, 85, 0);
+  }
+}
+
+.btn-pulse {
+  animation: buttonPulse 2.5s infinite;
+}
+
+/* ==========================================
+   CAPSULES & BADGES SYSTEM
+   ========================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  backdrop-filter: blur(4px);
+}
+
+.badge-gold {
+  background-color: rgba(197, 168, 128, 0.12);
+  color: var(--color-gold-bright);
+  border-color: var(--border-gold);
+}
+
+.badge-white {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.opacity-glow {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: var(--color-text-secondary);
+  border-color: var(--border-dark);
+}
+
+/* CSS Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* Responsive Scaling base breakpoints */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
