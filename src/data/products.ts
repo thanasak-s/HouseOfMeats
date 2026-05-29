@@ -11,6 +11,7 @@ export interface Product {
   descriptionEn: string;
   descriptionTh: string;
   image: string; // Image path served from public/picture directory
+  images: string[]; // List of gallery images (primary + closeups + packaging)
   lineMessageUrlEn: string; // URL-encoded LINE message link (English)
   lineMessageUrlTh: string; // URL-encoded LINE message link (Thai)
   facebookUrl?: string; // Optional direct Facebook post or photo link
@@ -28,6 +29,12 @@ export const PRODUCTS: Product[] = [
     descriptionEn: 'Fresh premium Atlantic salmon portions. Cleaned, bone-out, and vacuum-sealed. Perfect for grilling, air-frying, or healthy meal preparation.',
     descriptionTh: 'แซลมอนแอตแลนติกสดเกรดพรีเมียม หั่นชิ้นหนา ถอดก้าง ซีลสูญญากาศสะอาด เหมาะสำหรับย่าง อบ หม้อทอดไร้น้ำมัน หรือทำอาหารสุขภาพ',
     image: '/picture/salmon.jpg',
+    images: [
+      '/picture/salmon.jpg',
+      '/picture/salmon_pack.jpg',
+      '/picture/salmon_detail_1.png',
+      '/picture/salmon_detail_2.png'
+    ],
     lineMessageUrlEn: 'https://line.me/R/oaMessage/%40001fnqvs/?' + encodeURIComponent('Hi, I am interested in ordering Salmon (160–260g). Please check availability.'),
     lineMessageUrlTh: 'https://line.me/R/oaMessage/%40001fnqvs/?' + encodeURIComponent('สวัสดีครับ/ค่ะ สนใจสั่งซื้อแซลมอนแอตแลนติก (160–260g) รบกวนเช็คสินค้าให้หน่อยครับ/ค่ะ'),
     facebookUrl: 'https://www.facebook.com/profile.php?id=61590052253481',
@@ -43,6 +50,12 @@ export const PRODUCTS: Product[] = [
     descriptionEn: 'Premium Australian Wagyu Striploin with excellent marbling (MB 2+), tenderness, and rich beefy flavor. The perfect gourmet steak cut.',
     descriptionTh: 'เนื้อสตริปลอยน์วากิวออสเตรเลียพรีเมียม ลายหินอ่อนสวยงาม (MB 2+) สัมผัสนุ่ม รสชาติเนื้อเข้มข้นกลมกล่อม เหมาะสำหรับทำสเต็กชั้นเลิศ',
     image: '/picture/AU_Striploin.jpg',
+    images: [
+      '/picture/AU_Striploin.jpg',
+      '/picture/striploin_pack.jpg',
+      '/picture/striploin_detail_1.png',
+      '/picture/striploin_detail_2.png'
+    ],
     lineMessageUrlEn: 'https://line.me/R/oaMessage/%40001fnqvs/?' + encodeURIComponent('Hi, I am interested in ordering Australian Wagyu Striploin (240–260g).'),
     lineMessageUrlTh: 'https://line.me/R/oaMessage/%40001fnqvs/?' + encodeURIComponent('สวัสดีครับ/ค่ะ สนใจสั่งซื้อเนื้อวากิวออสเตรเลีย สตริปลอยน์ (240–260g) ครับ/ค่ะ'),
     facebookUrl: 'https://www.facebook.com/profile.php?id=61590052253481',
@@ -58,6 +71,12 @@ export const PRODUCTS: Product[] = [
     descriptionEn: 'Luxury Japanese Kuroge Washu Wagyu Ribeye. Melt-in-your-mouth marbling, unmatched tenderness, and a rich, buttery sweet aroma.',
     descriptionTh: 'เนื้อริบอายวากิวขนดำญี่ปุ่นเกรด A5 ลายหินอ่อนแทรกละเอียดละลายในปาก สัมผัสนุ่มละมุนที่สุด พร้อมกลิ่นหอมเนยหวานเป็นเอกลักษณ์',
     image: '/picture/JP_Ribeye.jpg',
+    images: [
+      '/picture/JP_Ribeye.jpg',
+      '/picture/ribeye_pack.jpg',
+      '/picture/ribeye_detail_1.png',
+      '/picture/ribeye_detail_2.png'
+    ],
     lineMessageUrlEn: 'https://line.me/R/oaMessage/%40001fnqvs/?' + encodeURIComponent('Hi, I am interested in ordering Japanese Wagyu A5 Ribeye (260–290g).'),
     lineMessageUrlTh: 'https://line.me/R/oaMessage/%40001fnqvs/?' + encodeURIComponent('สวัสดีครับ/ค่ะ สนใจสั่งซื้อเนื้อวากิวญี่ปุ่น A5 ริบอาย (260–290g) ครับ/ค่ะ'),
     facebookUrl: 'https://www.facebook.com/profile.php?id=61590052253481',

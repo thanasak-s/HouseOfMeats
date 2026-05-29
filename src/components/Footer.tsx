@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
             <img src="/picture/logo.png" alt="House of Meats Logo" className="footer-logo" />
             <div>
               <h3 className="footer-brand-title">House of Meats</h3>
-              <p className="footer-brand-subtitle">Premium Meat & Salmon</p>
+              <p className="footer-brand-subtitle">Premium Meat</p>
             </div>
           </div>
           <p className="footer-brand-desc">

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Products from './components/Products';
@@ -7,9 +7,32 @@ import Contact from './components/Contact';
 import FinalCTA from './components/FinalCTA';
 import FloatingButtons from './components/FloatingButtons';
 import Footer from './components/Footer';
+import ProductDetailModal from './components/ProductDetailModal';
+import { Product, PRODUCTS } from './data/products';
+import { loadCatalog } from './lib/catalog';
 import './App.css';
 
 function App() {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [products, setProducts] = useState<Product[]>(PRODUCTS);
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    void loadCatalog({
+      directusUrl: import.meta.env.VITE_DIRECTUS_URL,
+      fallbackProducts: PRODUCTS,
+    }).then(({ products: loadedProducts }) => {
+      if (!isCancelled) {
+        setProducts(loadedProducts);
+      }
+    });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
   // Dynamic Scroll to Hash effect with smart fallbacks and real-time hashchange support
   useEffect(() => {
     const scrollToHash = () => {
@@ -57,6 +80,18 @@ function App() {
     };
   }, []);
 
+  // Lock body scrolling only while the detail modal is open
+  useEffect(() => {
+    if (selectedProduct) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProduct]);
+
   return (
     <div className="app-wrapper">
       {/* Sticky Premium Header */}
@@ -68,7 +103,7 @@ function App() {
         <Hero />
         
         {/* Products Section */}
-        <Products />
+        <Products products={products} onOpenDetails={setSelectedProduct} />
         
         {/* About / Why Choose Us Section */}
         <About />
@@ -82,6 +117,13 @@ function App() {
 
       {/* Custom Floating Actions Panel (LINE, FB, Maps) */}
       <FloatingButtons />
+
+      {/* Premium Product Detail Modal */}
+      <ProductDetailModal 
+        key={selectedProduct?.id || 'none'}
+        product={selectedProduct} 
+        onClose={() => setSelectedProduct(null)} 
+      />
 
       {/* Structured Boutique Footer */}
       <Footer />

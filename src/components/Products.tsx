@@ -1,9 +1,13 @@
-import React from 'react';
-import { PRODUCTS } from '../data/products';
+import { Product } from '../data/products';
 import ProductCard from './ProductCard';
 import { useLanguage } from '../context/LanguageContext';
 
-export const Products: React.FC = () => {
+interface ProductsProps {
+  products: Product[];
+  onOpenDetails: (product: Product) => void;
+}
+
+export const Products: React.FC<ProductsProps> = ({ products, onOpenDetails }) => {
   const { t } = useLanguage();
 
   return (
@@ -20,8 +24,8 @@ export const Products: React.FC = () => {
 
         {/* Product Cards Grid */}
         <div id="products-grid" className="products-grid">
-          {PRODUCTS.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} onOpenDetails={onOpenDetails} />
           ))}
         </div>
         
