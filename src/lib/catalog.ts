@@ -19,6 +19,29 @@ export interface CatalogLoadResult {
   source: 'directus' | 'fallback';
 }
 
+const mergeFallbackImages = (
+  directusProduct: Product,
+  fallbackProduct?: Product
+): Product => {
+  if (!fallbackProduct || directusProduct.images.length > 1) {
+    return directusProduct;
+  }
+
+  const mergedImages = [...directusProduct.images];
+
+  for (const image of fallbackProduct.images) {
+    if (!mergedImages.includes(image)) {
+      mergedImages.push(image);
+    }
+  }
+
+  return {
+    ...directusProduct,
+    images: mergedImages,
+    image: directusProduct.image || fallbackProduct.image,
+  };
+};
+
 const PRODUCTS_QUERY = [
   'fields=slug,name_en,name_th,weight,price_en,price_th,description_en,description_th,featured,facebook_url,line_message_url_en,line_message_url_th,cover_image,gallery_images.directus_files_id',
   'filter[status][_eq]=published',
